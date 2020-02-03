@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 
 const rule = require('../../../lib/rules/selector-naming-convention')
+
 // eslint-disable-next-line
 const { RuleTester } = require('eslint')
 
@@ -53,6 +54,24 @@ ruleTester.run('selector-naming-convention', rule, {
     {
       code: 'const stuff = state => state.stuff',
       filename: 'selectors/index.js',
+      errors: [
+        {
+          message: "Selector functions should be prefixed with 'get'",
+        },
+      ],
+    },
+    {
+      code: 'const stuff = state => state.stuff',
+      filename: 'selectors/index.ts',
+      errors: [
+        {
+          message: "Selector functions should be prefixed with 'get'",
+        },
+      ],
+    },
+    {
+      code: 'const stuff = state => state.stuff',
+      filename: 'selectors/index.tsx',
       errors: [
         {
           message: "Selector functions should be prefixed with 'get'",
