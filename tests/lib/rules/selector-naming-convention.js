@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 
 const rule = require('../../../lib/rules/selector-naming-convention')
+
 // eslint-disable-next-line
 const { RuleTester } = require('eslint')
 
