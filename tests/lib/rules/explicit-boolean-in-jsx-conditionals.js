@@ -67,6 +67,8 @@ ruleTester.run('explicit-boolean-in-jsx-conditionals', rule, {
           message: 'Conditionals in JSX should use explicit Booleans',
         },
       ],
+      output:
+        'const Something = () => <View>{!!(something) && <Something />}</View>',
     },
     {
       code: "const Something = () => <View>{'' && <Something />}</View>",
@@ -76,6 +78,7 @@ ruleTester.run('explicit-boolean-in-jsx-conditionals', rule, {
           message: 'Conditionals in JSX should use explicit Booleans',
         },
       ],
+      output: `const Something = () => <View>{!!('') && <Something />}</View>`,
     },
   ],
 })
