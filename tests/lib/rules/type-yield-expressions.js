@@ -50,5 +50,13 @@ ruleTester.run('type-yield-expressions', rule, {
         },
       ],
     },
+    {
+      code: wrapInGenerator('return yield call(someSaga)'),
+      errors: [
+        {
+          message: 'Outputs of yield expressions should be typed',
+        },
+      ],
+    },
   ],
 })
