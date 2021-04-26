@@ -37,7 +37,7 @@ ruleTester.run('type-yield-expressions', rule, {
       code: wrapInGenerator('yield call(someSaga)'),
     },
     {
-      code: wrapInGenerator('const x: Type = yield call(someSaga)'),
+      code: wrapInGenerator('const x: number = yield call(someSaga)'),
     },
   ],
 
