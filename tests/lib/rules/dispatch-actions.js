@@ -43,6 +43,13 @@ ruleTester.run('dispatch-actions', rule, {
           }
           `,
     },
+    {
+      code: `
+            const mapDispatchToProps = (dispatch) => ({
+              action: () => dispatch(actionName()),
+            })
+            `,
+    },
   ],
 
   invalid: [
