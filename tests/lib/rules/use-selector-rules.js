@@ -27,48 +27,96 @@ const ruleTester = new TSESLint.RuleTester({
 // Tests
 //------------------------------------------------------------------------------
 
-const COMPONENT_WITH_NO_USE_SELECTOR = `
+const VALID1 = `
 const Component = () => {
   return <View />
 }
 `
-const COMPONENT_WITH_USE_SELECTOR_AND_NO_MEMO = `
+const INVALID1 = `
 const Component = () => {
   const selectorValue = useSelector(selector)
   return <View />
 }
 `
 
-const COMPONENT_WITH_USE_SELECTOR_AND_MEMO = `
+const VALID2 = `
 const Component = React.memo(() => {
   const selectorValue = useSelector(selector)
   return <View />
 })
 `
 
-const COMPONENT_WITH_USE_SELECTOR_AND_MEMO_AND_PROPS = `
+const VALID3 = `
 const Component = React.memo((props: {x: number}) => {
   const selectorValue = useSelector(selector)
   return <View />
 })
 `
 
+const VALID4 = `
+const Component = () => {
+  const selectorValue = useSelector(selector)
+  return <View />
+}
+
+export const MemoizedComponent = React.memo(Component)
+`
+
+const VALID5 = `
+const Component = () => {
+  const selectorValue = useSelector(selector)
+  return <View />
+}
+
+export default React.memo(Component)
+`
+
+const VALID6 = `
+const Component = () => {
+  const selectorValue = useSelector(selector)
+  return <View />
+}
+
+export const ConnectedComponent = connect()(Component)
+`
+
+const VALID7 = `
+const Component = () => {
+  const selectorValue = useSelector(selector)
+  return <View />
+}
+
+export default connect()(Component)
+`
+
 ruleTester.run('use-selector-rules', rule, {
   valid: [
     {
-      code: COMPONENT_WITH_NO_USE_SELECTOR,
+      code: VALID1,
     },
     {
-      code: COMPONENT_WITH_USE_SELECTOR_AND_MEMO,
+      code: VALID2,
     },
     {
-      code: COMPONENT_WITH_USE_SELECTOR_AND_MEMO_AND_PROPS,
+      code: VALID3,
+    },
+    {
+      code: VALID4,
+    },
+    {
+      code: VALID5,
+    },
+    {
+      code: VALID6,
+    },
+    {
+      code: VALID7,
     },
   ],
 
   invalid: [
     {
-      code: COMPONENT_WITH_USE_SELECTOR_AND_NO_MEMO,
+      code: INVALID1,
       errors: [
         {
           message: rule.USE_SELECTOR_ERROR_MESSAGE,
