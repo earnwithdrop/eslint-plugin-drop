@@ -1,6 +1,6 @@
 {
   "name": "@drop-engineering/eslint-plugin-drop",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Drop javascript styleguide",
   "keywords": [
     "eslint",
