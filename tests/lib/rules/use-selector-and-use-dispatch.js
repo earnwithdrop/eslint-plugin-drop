@@ -89,6 +89,12 @@ const Component = () => {
 export default connect()(Component)
 `
 
+const VALID8 = `
+function useCustomHook() {
+  const x = HOOK_NAME
+}
+`
+
 const generateUseDispatchCode = input =>
   input.replace('HOOK_NAME', 'useDispatch()')
 const generateUseSelectorCode = input =>
@@ -102,6 +108,7 @@ const validCodeArray = [
   VALID5,
   VALID6,
   VALID7,
+  VALID8,
 ].reduce(
   (acc, curr) => [
     ...acc,
